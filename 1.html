@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>São Miguel · June 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #f0ece4;
+  --card:      #ffffff;
+  --surface:   #f8f6f2;
+  --surface2:  #f0ede8;
+  --border:    #ddd8cf;
+  --border2:   #ccc6bb;
+  --text:      #1c2a18;
+  --text2:     #3e5435;
+  --text3:     #7a9468;
+  --text4:     #a8bc98;
+  --green:     #2a6b35;
+  --green-lt:  #eaf4eb;
+  --green-md:  #b8dbbe;
+  --teal:      #0a7c8c;
+  --teal-lt:   #e2f4f6;
+  --amber:     #8a5a0a;
+  --amber-lt:  #fef3dd;
+  --red:       #b82222;
+  --red-lt:    #fdecec;
+  --blue:      #1a5c9e;
+  --blue-lt:   #e4eefa;
+  --orange:    #b84010;
+  --orange-lt: #fdeee6;
+  --purple:    #6430b8;
+  --purple-lt: #f0eafc;
+  --serif:     'Cormorant Garamond', Georgia, serif;
+  --sans:      'DM Sans', system-ui, sans-serif;
+  --mono:      'Space Mono', monospace;
+  --r:         14px;
+  --r-sm:      8px;
+  --shadow:    0 1px 4px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.07);
+  --st: env(safe-area-inset-top, 0px);
+  --sb: env(safe-area-inset-bottom, 0px);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+a { color: inherit; }
+
+/* ── HEADER ── */
+#site-header {
+  background: linear-gradient(160deg, #122018 0%, #1a3020 50%, #0e2418 100%);
+  padding: calc(var(--st) + 22px) 20px 26px;
+  position: relative;
+  overflow: hidden;
+}
+#site-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 90% -10%, rgba(74,200,100,0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hdr-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: #7dd98a;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+.hdr-title {
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.05;
+  color: #f0f8f0;
+  letter-spacing: -0.3px;
+  margin-bottom: 2px;
+}
+.hdr-title em { font-style: italic; color: #7dde8a; }
+.hdr-meta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.hdr-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: rgba(240,248,240,0.75);
+  font-weight: 500;
+}
+.hdr-badge {
+  font-family: var(--mono);
+  font-size: 9px;
+  padding: 3px 9px;
+  border-radius: 99px;
+  background: rgba(125,222,138,0.2);
+  color: #7dde8a;
+  border: 1px solid rgba(125,222,138,0.35);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── SECTION ── */
+.section { padding: 16px 14px 0; }
+.section-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--text3);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  padding-left: 2px;
+}
+
+/* ── BOOKINGS ── */
+#bookings-section { padding: 14px 14px 0; }
+.bk-toggle {
+  background: var(--amber-lt);
+  border: 1.5px solid #e8c070;
+  border-radius: var(--r);
+  padding: 12px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.15s;
+}
+.bk-toggle:active { background: #fde7b0; }
+.bk-icon { font-size: 20px; }
+.bk-label { flex: 1; }
+.bk-title { font-size: 14px; font-weight: 700; color: var(--amber); }
+.bk-sub { font-size: 11px; color: #b07a20; margin-top: 1px; }
+.bk-chev { color: var(--amber); font-size: 13px; transition: transform 0.28s; }
+.bk-chev.open { transform: rotate(180deg); }
+.bk-body { display: none; border: 1.5px solid #e8c070; border-top: none; border-radius: 0 0 var(--r) var(--r); background: #fffdf5; overflow: hidden; }
+.bk-body.open { display: block; }
+.bk-item { padding: 12px 14px; border-bottom: 1px solid #f0e0b0; }
+.bk-item:last-child { border-bottom: none; }
+.bk-row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 4px; }
+.bk-badge {
+  font-family: var(--mono);
+  font-size: 8px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+.bk-badge.urgent { background: var(--red-lt); color: var(--red); border: 1px solid #f0b0b0; }
+.bk-badge.important { background: var(--amber-lt); color: var(--amber); border: 1px solid #e8c080; }
+.bk-badge.check { background: var(--blue-lt); color: var(--blue); border: 1px solid #b0caf0; }
+.bk-name { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.3; }
+.bk-detail { font-size: 12px; color: var(--text2); line-height: 1.55; margin-bottom: 6px; }
+.bk-link { font-family: var(--mono); font-size: 10px; color: var(--teal); text-decoration: none; display: inline-block; margin-right: 10px; border-bottom: 1px solid rgba(10,124,140,0.3); }
+
+/* ── WEATHER ── */
+#weather-section { padding: 14px 14px 0; }
+#weather-strip { display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 2px; }
+#weather-strip::-webkit-scrollbar { display: none; }
+.wx-card {
+  flex-shrink: 0;
+  width: 78px;
+  scroll-snap-align: start;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 6px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s;
+}
+.wx-card.wx-today { border-color: #2a9e45; background: #f0faf2; }
+.wx-day { font-family: var(--mono); font-size: 9px; color: var(--text3); letter-spacing: 0.08em; margin-bottom: 5px; }
+.wx-card.wx-today .wx-day { color: var(--green); font-weight: 700; }
+.wx-emoji { font-size: 24px; display: block; margin-bottom: 4px; line-height: 1; }
+.wx-hi { font-size: 15px; font-weight: 700; color: var(--text); }
+.wx-lo { font-size: 12px; color: var(--text3); font-weight: 400; }
+.wx-rain { font-family: var(--mono); font-size: 9px; color: var(--teal); margin-top: 3px; }
+.wx-loading { font-size: 12px; color: var(--text3); padding: 14px 0; font-style: italic; }
+.wx-error { font-size: 12px; color: var(--text3); padding: 12px 0; line-height: 1.55; }
+.wx-error a { color: var(--teal); }
+
+/* ── DAY NAV ── */
+#day-nav {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 14px 14px 0;
+  scrollbar-width: none;
+}
+#day-nav::-webkit-scrollbar { display: none; }
+.dnav-btn {
+  flex-shrink: 0;
+  padding: 7px 13px;
+  border-radius: 99px;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  color: var(--text2);
+  font-family: var(--mono);
+  font-size: 10px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.18s;
+}
+.dnav-btn.dnav-today { border-color: var(--green); background: var(--green-lt); color: var(--green); font-weight: 700; }
+
+/* ── WEBCAM STRIP ── */
+#webcam-section { padding: 14px 14px 0; }
+.wc-grid { display: flex; gap: 10px; }
+.wc-card {
+  flex: 1;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.wc-top {
+  background: #1c2a1c;
+  padding: 6px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.wc-label { font-family: var(--mono); font-size: 8px; color: #7dde8a; letter-spacing: 0.12em; text-transform: uppercase; }
+.wc-live { font-family: var(--mono); font-size: 8px; color: rgba(125,222,138,0.6); }
+.wc-content { padding: 10px; }
+.wc-name { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.wc-sub { font-size: 11px; color: var(--text3); margin-bottom: 8px; }
+.wc-btn {
+  display: block;
+  text-align: center;
+  padding: 7px 10px;
+  background: var(--green-lt);
+  border: 1.5px solid var(--green-md);
+  border-radius: var(--r-sm);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green);
+  text-decoration: none;
+  margin-bottom: 4px;
+  transition: background 0.15s;
+}
+.wc-btn:active { background: var(--green-md); }
+.wc-note { font-size: 10px; color: var(--text4); font-style: italic; }
+
+/* ── DAYS MAIN ── */
+#days-main { padding: 14px 14px 40px; display: flex; flex-direction: column; gap: 12px; }
+
+/* ── DAY CARD ── */
+.day-card {
+  background: var(--card);
+  border-radius: var(--r);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.day-card.is-today { border-color: var(--green); box-shadow: 0 0 0 3px rgba(42,107,53,0.12), var(--shadow); }
+.day-hdr {
+  padding: 14px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+  transition: background 0.15s;
+}
+.day-hdr:active { background: var(--surface); }
+.day-num {
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.day-num .n { font-family: var(--serif); font-size: 22px; font-weight: 700; line-height: 1; }
+.day-num .d { font-family: var(--mono); font-size: 7px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; margin-top: 1px; }
+.day-info { flex: 1; min-width: 0; }
+.day-title { font-family: var(--serif); font-size: 19px; font-weight: 600; line-height: 1.15; color: var(--text); }
+.day-sub { font-size: 11.5px; color: var(--text3); margin-top: 3px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.today-tag {
+  font-family: var(--mono);
+  font-size: 8px;
+  padding: 2px 7px;
+  border-radius: 99px;
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.day-chev { color: var(--text4); font-size: 11px; flex-shrink: 0; transition: transform 0.28s; }
+.day-card.open .day-chev { transform: rotate(180deg); }
+.day-body { display: none; }
+.day-card.open .day-body { display: block; }
+
+/* Color bar at top of each day */
+.day-bar { height: 4px; width: 100%; }
+
+/* ── PERIOD ── */
+.period { border-top: 1px solid var(--border); }
+.period-hdr {
+  padding: 9px 14px;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.period-icon { font-size: 14px; }
+.period-lbl { font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; color: var(--text3); text-transform: uppercase; flex: 1; }
+.period-time { font-family: var(--mono); font-size: 9px; color: var(--text4); }
+
+/* ── ACTIVITY ── */
+.act {
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.act:last-child { border-bottom: none; }
+.act:active { background: var(--surface); }
+.act-hdr { padding: 12px 14px; display: flex; align-items: flex-start; gap: 10px; }
+.act-emoji { font-size: 20px; flex-shrink: 0; margin-top: 0; line-height: 1.4; }
+.act-info { flex: 1; min-width: 0; }
+.act-name { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.3; }
+.act-pills { display: flex; gap: 5px; margin-top: 5px; flex-wrap: wrap; }
+.pill {
+  font-family: var(--mono);
+  font-size: 9px;
+  padding: 2px 7px;
+  border-radius: 5px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+.pill-dur { background: var(--teal-lt); color: var(--teal); border: 1px solid #90d4dc; }
+.pill-cost { background: var(--green-lt); color: var(--green); border: 1px solid var(--green-md); }
+.pill-warn { background: var(--red-lt); color: var(--red); border: 1px solid #f0b0b0; }
+.pill-info { background: var(--blue-lt); color: var(--blue); border: 1px solid #a8c8f0; }
+.act-chev { color: var(--text4); font-size: 10px; margin-top: 5px; flex-shrink: 0; transition: transform 0.25s; }
+.act.open .act-chev { transform: rotate(180deg); }
+.act-body { display: none; padding: 4px 14px 14px 14px; background: var(--surface); }
+.act.open .act-body { display: block; }
+.act-desc { font-size: 13.5px; color: var(--text2); line-height: 1.65; margin-bottom: 10px; }
+
+/* ── TIP BOXES ── */
+.tipbox {
+  padding: 9px 11px;
+  border-radius: var(--r-sm);
+  margin-bottom: 8px;
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+.tipbox-lbl { font-family: var(--mono); font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; display: block; margin-bottom: 3px; font-weight: 700; }
+.tb-tip  { background: var(--green-lt); border: 1px solid var(--green-md); color: #1e5228; }
+.tb-tip .tipbox-lbl { color: var(--green); }
+.tb-warn { background: var(--amber-lt); border: 1px solid #e8c070; color: #6a4010; }
+.tb-warn .tipbox-lbl { color: var(--amber); }
+.tb-crowd { background: var(--blue-lt); border: 1px solid #a8c8f0; color: #1a3c6e; }
+.tb-crowd .tipbox-lbl { color: var(--blue); }
+.tb-rain { background: var(--purple-lt); border: 1px solid #c8a8f0; color: #3c1c78; }
+.tb-rain .tipbox-lbl { color: var(--purple); }
+
+/* ── ACTIONS ── */
+.action-row { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 10px; }
+.abtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 13px;
+  border-radius: var(--r-sm);
+  font-size: 12.5px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1.5px solid;
+  min-height: 38px;
+  font-family: var(--sans);
+  transition: filter 0.12s;
+  cursor: pointer;
+}
+.abtn:active { filter: brightness(0.92); }
+.abtn-maps { background: var(--green-lt); color: var(--green); border-color: var(--green-md); }
+.abtn-web  { background: var(--teal-lt); color: var(--teal); border-color: #90d4dc; }
+.abtn-call { background: var(--amber-lt); color: var(--amber); border-color: #e8c070; }
+.act-addr { font-family: var(--mono); font-size: 10px; color: var(--text4); margin: 8px 0 4px; line-height: 1.5; }
+
+/* ── WEBCAM IN ACTIVITY ── */
+.wc-activity-box {
+  margin-top: 10px;
+  border-radius: var(--r-sm);
+  border: 1.5px solid var(--border2);
+  overflow: hidden;
+  background: var(--card);
+}
+.wc-act-hdr { background: #1c2a1c; padding: 7px 10px; display: flex; justify-content: space-between; align-items: center; }
+.wc-act-title { font-family: var(--mono); font-size: 9px; color: #7dde8a; letter-spacing: 0.12em; }
+.wc-act-body { padding: 10px; }
+.wc-act-desc { font-size: 12px; color: var(--text2); margin-bottom: 8px; line-height: 1.5; }
+.wc-act-btn { display: block; text-align: center; padding: 9px; background: var(--green-lt); border: 1.5px solid var(--green-md); border-radius: var(--r-sm); font-size: 13px; font-weight: 600; color: var(--green); text-decoration: none; }
+.wc-act-btn:active { background: var(--green-md); }
+
+/* ── RESTAURANT ── */
+.rest-section { border-top: 2px solid var(--border); background: var(--surface); }
+.rest-section-hdr { padding: 9px 14px; display: flex; align-items: center; gap: 7px; }
+.rest-section-icon { font-size: 14px; }
+.rest-section-lbl { font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; color: var(--orange); text-transform: uppercase; font-weight: 700; }
+.rest-card { cursor: pointer; border-top: 1px solid var(--border); transition: background 0.12s; }
+.rest-card:active { background: var(--orange-lt); }
+.rest-hdr { padding: 12px 14px; display: flex; align-items: flex-start; gap: 10px; }
+.rest-emoji { font-size: 24px; flex-shrink: 0; }
+.rest-info { flex: 1; min-width: 0; }
+.rest-name { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--text); line-height: 1.15; }
+.rest-type { font-size: 12px; color: var(--orange); margin-top: 2px; font-style: italic; font-weight: 500; }
+.rest-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 6px; }
+.rest-tag {
+  font-family: var(--mono);
+  font-size: 8px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.rt-res { background: var(--red-lt); color: var(--red); border: 1px solid #f0b0b0; }
+.rt-walk { background: var(--green-lt); color: var(--green); border: 1px solid var(--green-md); }
+.rt-early { background: var(--amber-lt); color: var(--amber); border: 1px solid #e8c070; }
+.rest-chev { color: var(--text4); font-size: 10px; margin-top: 6px; flex-shrink: 0; transition: transform 0.25s; }
+.rest-card.open .rest-chev { transform: rotate(180deg); }
+.rest-body { display: none; padding: 4px 14px 14px; background: var(--surface); }
+.rest-card.open .rest-body { display: block; }
+.rest-desc { font-size: 13.5px; color: var(--text2); line-height: 1.65; margin-bottom: 10px; }
+.must-box { background: var(--orange-lt); border: 1.5px solid #e8c8a0; border-radius: var(--r-sm); padding: 9px 11px; margin-bottom: 10px; }
+.must-lbl { font-family: var(--mono); font-size: 8px; color: var(--orange); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 3px; }
+.must-items { font-size: 13px; color: var(--text); line-height: 1.6; }
+
+/* ── DAY TIP ── */
+.day-tip-row { border-top: 1px solid var(--border); padding: 10px 14px; display: flex; gap: 9px; background: var(--surface2); }
+.dt-icon { font-size: 16px; flex-shrink: 0; }
+.dt-text { font-size: 12.5px; color: var(--text2); line-height: 1.6; }
+
+/* ── EMERGENCY ── */
+#emergency-section { padding: 14px 14px 0; margin-bottom: 20px; }
+.emerg-card { background: var(--card); border: 1.5px solid #f0b0b0; border-radius: var(--r); box-shadow: var(--shadow-sm); overflow: hidden; cursor: pointer; }
+.emerg-hdr { padding: 10px 14px; display: flex; gap: 8px; align-items: center; }
+.emerg-title { font-family: var(--mono); font-size: 10px; color: var(--red); letter-spacing: 0.1em; text-transform: uppercase; flex: 1; font-weight: 700; }
+.emerg-chev { color: var(--red); font-size: 10px; transition: transform 0.25s; }
+.emerg-card.open .emerg-chev { transform: rotate(180deg); }
+.emerg-body { display: none; border-top: 1px solid #f0b0b0; }
+.emerg-card.open .emerg-body { display: block; }
+.emerg-row { padding: 9px 14px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #fde8e8; }
+.emerg-row:last-child { border-bottom: none; }
+.emerg-lbl { font-size: 13px; color: var(--text2); }
+.emerg-val { font-family: var(--mono); font-size: 12px; color: var(--red); font-weight: 700; }
+
+/* ── FOOTER ── */
+footer { padding: 20px 14px calc(20px + var(--sb)); text-align: center; border-top: 1px solid var(--border); margin-top: 8px; }
+.footer-txt { font-size: 11px; color: var(--text4); font-style: italic; line-height: 1.8; }
+
+/* ── SCROLL ── */
+.scroll-target { scroll-margin-top: 8px; }
+
+/* ── HOME BASE ── */
+.home-base { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--r); box-shadow: var(--shadow-sm); overflow: hidden; }
+.hb-top { background: linear-gradient(135deg, #122018 0%, #1a3020 100%); padding: 10px 14px; display: flex; align-items: center; gap: 8px; }
+.hb-label { font-family: var(--mono); font-size: 9px; color: #7dde8a; letter-spacing: 0.16em; text-transform: uppercase; flex: 1; }
+.hb-badge { font-family: var(--mono); font-size: 8px; padding: 2px 7px; border-radius: 99px; background: rgba(125,222,138,0.2); color: #7dde8a; border: 1px solid rgba(125,222,138,0.3); }
+.hb-body { padding: 12px 14px; }
+.hb-name { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.hb-addr { font-family: var(--mono); font-size: 10.5px; color: var(--text2); line-height: 1.7; margin-bottom: 10px; }
+.hb-note { font-size: 11.5px; color: var(--text3); margin-top: 8px; font-style: italic; }
+.hb-actions { display: flex; gap: 7px; flex-wrap: wrap; }
+
+/* ── FAQ ACCORDION ── */
+.faq-section { margin-top: 10px; border: 1.5px solid var(--border); border-radius: var(--r-sm); overflow: hidden; }
+.faq-hdr { background: var(--surface2); padding: 9px 12px; cursor: pointer; display: flex; align-items: center; gap: 8px; user-select: none; transition: background 0.12s; }
+.faq-hdr:active { background: var(--border); }
+.faq-hdr-lbl { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); flex: 1; font-weight: 700; }
+.faq-hdr-chev { font-size: 10px; color: var(--text4); transition: transform 0.25s; }
+.faq-section.open .faq-hdr-chev { transform: rotate(180deg); }
+.faq-body { display: none; }
+.faq-section.open .faq-body { display: block; }
+.faq-item { border-top: 1px solid var(--border); cursor: pointer; transition: background 0.12s; }
+.faq-item:active { background: var(--surface); }
+.faq-q { padding: 10px 12px; font-size: 13px; font-weight: 600; color: var(--text); display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; line-height: 1.3; }
+.faq-q-chev { font-size: 9px; color: var(--text4); flex-shrink: 0; margin-top: 2px; transition: transform 0.2s; }
+.faq-item.open .faq-q-chev { transform: rotate(180deg); }
+.faq-a { display: none; padding: 0 12px 10px; font-size: 12.5px; color: var(--text2); line-height: 1.65; background: var(--surface); }
+.faq-item.open .faq-a { display: block; }
+
+.rest-card.rest-alt { background: #fffdf8; border-top: 1px dashed var(--border2); }
+.rt-alt { background: var(--teal-lt); color: var(--teal); border: 1px solid #90d4dc; }
+.abtn-reserve { background: var(--red-lt); color: var(--red); border-color: #f0b0b0; }
+.abtn-menu { background: var(--purple-lt); color: var(--purple); border-color: #c8a8f0; }
+
+/* ── TIDE WIDGET ── */
+.tide-box { margin-top: 10px; border: 1.5px solid #a8d4e0; border-radius: var(--r-sm); overflow: hidden; background: var(--teal-lt); }
+.tide-hdr { background: var(--teal); padding: 7px 11px; display: flex; align-items: center; gap: 7px; }
+.tide-hdr-lbl { font-family: var(--mono); font-size: 9px; color: #fff; letter-spacing: 0.14em; text-transform: uppercase; flex: 1; font-weight: 700; }
+.tide-hdr-time { font-family: var(--mono); font-size: 9px; color: rgba(255,255,255,0.8); }
+.tide-body { padding: 10px 11px; }
+.tide-status { font-size: 13px; font-weight: 600; color: var(--teal); margin-bottom: 4px; }
+.tide-note { font-size: 12px; color: var(--text2); line-height: 1.55; margin-bottom: 8px; }
+.tide-hours { font-family: var(--mono); font-size: 10px; color: var(--text3); margin-bottom: 8px; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="hdr-eyebrow">🌋 Family Trip</div>
+  <div class="hdr-title"><em>São Miguel</em><br>Azores, Portugal</div>
+  <div class="hdr-meta">
+    <span class="hdr-pill">📅 June 7–13, 2026</span>
+    <span class="hdr-pill">👨‍👩‍👧‍👦 5 Travelers</span>
+    <span class="hdr-badge">Rental Car</span>
+  </div>
+</header>
+
+<section id="bookings-section"></section>
+
+<section id="home-base-section"></section>
+
+<section id="webcam-section">
+  <div class="section-label" style="padding: 14px 16px 0;">📷 Live Webcams — Check Before Driving to Viewpoints</div>
+  <div style="padding: 8px 14px 0;"><div class="wc-grid" id="wc-grid"></div></div>
+</section>
+
+<section id="weather-section">
+  <div class="section-label" style="padding: 14px 16px 0;">🌤 Trip Forecast — Ponta Delgada</div>
+  <div style="padding: 8px 14px 0;"><div id="weather-strip"><div class="wx-loading">Fetching forecast…</div></div></div>
+</section>
+
+<nav style="padding: 14px 14px 0;"><div id="day-nav"></div></nav>
+
+<main id="days-main"></main>
+
+<section id="emergency-section"></section>
+
+<footer>
+  <div class="footer-txt">
+    Bille Family · São Miguel 2026<br>
+    Webcams: SpotAzores · Weather: Open-Meteo · Maps: Google
+  </div>
+</footer>
+
+<script>
+// ──────────────────────────────────────────────
+//  DATA
+// ──────────────────────────────────────────────
+
+const WEBCAMS = [
+  {
+    key: 'sc',
+    name: 'Sete Cidades',
+    sub: 'Vista do Rei crater area',
+    link: 'https://spotazores.com/en/webcam/sao-miguel/sete-cidades-cumeeiras/',
+    note: 'Check before driving — fog often clears mid-morning'
+  },
+  {
+    key: 'lf',
+    name: 'Lagoa do Fogo',
+    sub: 'Central island plateau',
+    link: 'https://spotazores.com/en/webcam/sao-miguel/lagoa-do-fogo/',
+    note: 'Clouds linger here — go immediately when clear'
+  }
+];
+
+const BOOKINGS = [
+  {
+    urgency: 'urgent',
+    name: "Tony's Restaurant, Furnas — Thursday Jun 11 Lunch",
+    detail: "Cozido das Furnas has LIMITED daily portions and sells out. Reserve at least 48 hours ahead. Order 1 portion per 2 people — it's enormous.",
+    link: 'tel:+351296584290', linkLabel: 'Call +351 296 584 290',
+    link2: 'https://www.tripadvisor.com/Restaurant_Review-g1190881-d2365912-Reviews-Restaurante_Tonys-Furnas.html', link2Label: 'TripAdvisor'
+  },
+  {
+    urgency: 'important',
+    name: 'Caldeira Velha Hot Springs — Friday Jun 12',
+    detail: 'Sells out same day in summer. Book online at caldeiravelha.net as early as possible.',
+    link: 'https://caldeiravelha.net', linkLabel: 'Book at caldeiravelha.net'
+  },
+  {
+    urgency: 'important',
+    name: 'Vila Franca do Campo Islet — Tuesday Jun 9',
+    detail: 'Strict daily quota, limited tickets. Books fast in summer. Book at ilheu.vilafrancadocampo.pt before the trip.',
+    link: 'https://ilheu.vilafrancadocampo.pt', linkLabel: 'Book Tickets'
+  },
+  {
+    urgency: 'check',
+    name: 'Lagoa do Fogo Shuttle — Check Before Jun 12',
+    detail: 'Shuttle-only access starts mid-June. Your trip is early June so you likely can drive — verify at lagoadofogo.pt. Shuttle is €5/person if active.',
+    link: 'https://lagoadofogo.pt', linkLabel: 'Check lagoadofogo.pt'
+  }
+];
+
+const WMO_EMOJI = {0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',48:'🌫',51:'🌦',53:'🌧',55:'🌧',61:'🌧',63:'🌧',65:'🌧',71:'🌨',73:'🌨',75:'🌨',80:'🌦',81:'🌧',82:'⛈',95:'⛈',96:'⛈',99:'⛈'};
+
+const DAYS = [
+  // ── DAY 1 ──
+  {
+    id:'day1', dateStr:'2026-06-07', number:1, label:'Sunday, June 7',
+    theme:'Arrival Day', region:'Ponta Delgada', emoji:'✈️', color:'#2a9e7a',
+    drive: null,
+    periods:[
+      { icon:'🌅', label:'Morning', time:'6:30 AM Arrival', activities:[
+        { emoji:'🚗', name:'Arrive + Pick Up Rental Car', dur:'~1 hr', cost:'Pre-paid',
+          desc:"Land at 6:30 AM. Car rental desks are inside the terminal. Take your time — you're on an island now, nobody is in a hurry.",
+          tips:[{t:'warn',lbl:'Jet Lag',txt:"Today is a recovery day by design. Don't try to see everything. The island will still be there tomorrow when you're rested."}],
+          maps:'https://maps.google.com/?q=João+Paulo+II+Airport+Ponta+Delgada',
+          addr:'Aeroporto João Paulo II, Ponta Delgada' },
+        { emoji:'🏛️', name:'Portas da Cidade + Waterfront Walk', dur:'30–45 min', cost:'Free',
+          desc:"The iconic black-and-white basalt city gates from 1783. Walk the seafront promenade, look at the marina, breathe the salt air. A gentle introduction to the island.",
+          tips:[{t:'tip',lbl:'First breakfast',txt:"Any pastelaria on this walk will have a bolo lêvedo (sweet local bread) and a galão (milky espresso). This is the Azorean breakfast. You need this."}],
+          maps:'https://maps.google.com/?q=Portas+da+Cidade+Ponta+Delgada',
+          addr:'Largo de Gonçalo Velho Cabral, Ponta Delgada' }
+      ]},
+      { icon:'☀️', label:'Afternoon', time:'After check-in', activities:[
+        { emoji:'🍍', name:'Pineapple Greenhouse — Ananas dos Açores', dur:'45 min', cost:'Free',
+          desc:"Azorean pineapples grown in volcanic-soil-heated greenhouses. The only place in Europe where this happens. Utterly strange and wonderful. Free to visit, free to taste. 10 minutes from the city.",
+          tips:[{t:'tip',lbl:'Buy one',txt:"Azorean pineapples are sweeter and more aromatic than any pineapple you've had. The shop also sells pineapple liqueur — a great gift."}],
+          maps:'https://maps.google.com/?q=Ananas+dos+Açores+Fajã+de+Baixo',
+          addr:'Rua 1o de Maio 192-194, Fajã de Baixo',
+          web:'https://www.ananasdosacores.com' },
+        { emoji:'🏨', name:'Hotel + Real Rest', dur:'Afternoon', cost:null,
+          desc:"Check in, shower, and actually rest. A nap on day one makes the rest of the trip dramatically better. Aim to push through to 9 PM local time, then sleep.",
+          tips:[{t:'crowd',lbl:'Strategy',txt:"You flew overnight. Your body is confused. Forcing a full day on arrival ruins day two. Rest now = better photos, better moods, better everything."}] }
+      ]},
+      { icon:'🌙', label:'Evening', time:'7:00 PM', activities:[
+        { emoji:'🚶', name:'Evening Waterfront Stroll', dur:'20 min', cost:'Free',
+          desc:"A short walk before dinner to get the blood moving and the eyes adjusted to local time.",
+          maps:'https://maps.google.com/?q=Ponta+Delgada+Marina+Azores' }
+      ]}
+    ],
+    restaurants:[
+      { name:'Taberna Açor', emoji:'🦅', type:'Traditional Azorean Tapas',
+        desc:"One of the most beloved locals' spots in Ponta Delgada — casual, no-fuss, fantastic. Wooden interior, sharing plates, friendly staff. No reservations taken, arrive right when they open at 7 PM.",
+        mustOrder:'Lapas (grilled limpets with garlic and lemon butter) — order two plates immediately. Polvo no vinho (octopus in wine). Local cheese board.',
+        res:'walkIn', resNote:'Walk-in only. Arrive at 7 PM on the dot.',
+        maps:'https://maps.google.com/?q=Taberna+Açor+Ponta+Delgada',
+        addr:'Rua António José D\'Almeida 8, Ponta Delgada',
+        trip:'https://www.tripadvisor.com/Restaurant_Review-g189135-d12716413-Reviews-Taberna_Acor-Ponta_Delgada_Sao_Miguel_Azores.html' },
+      { name:'Palma Sushi', emoji:'🍣', type:'Japanese · Azorean Fish',
+        desc:"If anyone in the group wants something completely different on night one, Palma Sushi delivers excellent sushi made entirely with fresh Azorean fish — bluefin tuna from local waters, wreckfish, sea bass. The quality of the fish is the whole point. Near the city center.",
+        mustOrder:'Bluefin tuna nigiri. The chef\'s sashimi selection. Ask what came in fresh that day.',
+        res:'reserve', resNote:'Reservations recommended.',
+        maps:'https://maps.google.com/?q=Palma+Sushi+Ponta+Delgada+Azores',
+        addr:'Ponta Delgada center, São Miguel',
+        trip:'https://www.tripadvisor.com/Restaurant_Review-g189135-d6681963-Reviews-Palma_Sushi-Ponta_Delgada_Sao_Miguel_Azores.html' }
+    ],
+    rain:'No issues today — it\'s an easy arrival day regardless of weather.',
+    tip:'Jet lag is real. Today is about landing, eating something delicious, and sleeping. The views will still be there tomorrow.'
+  },
+
+  // ── DAY 2 ──
+  {
+    id:'day2', dateStr:'2026-06-08', number:2, label:'Monday, June 8',
+    theme:'Sete Cidades — West Coast', region:'Western São Miguel', emoji:'🌋', color:'#2a7a38',
+    drive:'35 min from PD',
+    periods:[
+      { icon:'🌅', label:'Morning', time:'Leave 8:30 AM', activities:[
+        { emoji:'👁️', name:'Miradouro Vista do Rei', dur:'45–60 min', cost:'Free',
+          desc:"The most iconic view in the entire Azores. At 550m you look down into an ancient volcanic crater holding two lakes — one deep blue, one bright green. Named for King Carlos I who visited in 1901 and reportedly could not speak for several minutes.",
+          tips:[
+            {t:'crowd',lbl:'Crowds',txt:'Arrive by 9 AM before tour buses. This is one of the most photographed places in Portugal — early morning has the best light and fewest people.'},
+            {t:'warn',lbl:'Fog Warning',txt:'Check the Sete Cidades webcam (on this app\'s home screen) before leaving. Fog often lifts by 10 AM — if it\'s still in at 8:30, have a long breakfast and try at 10.'}
+          ],
+          maps:'https://maps.google.com/?q=Miradouro+Vista+do+Rei+Sete+Cidades+Azores',
+          addr:'Estrada Regional, Sete Cidades',
+          webcam:'sc' },
+        { emoji:'🏞️', name:'Lagoa do Canário', dur:'20–30 min', cost:'Free',
+          desc:"A quiet little lake tucked in the forest just below the crater rim. On a calm morning the reflections are perfect. Short walk from the car park, far fewer people than the main viewpoints.",
+          maps:'https://maps.google.com/?q=Lagoa+do+Canário+Sete+Cidades+Azores',
+          addr:'Lagoa do Canário, Sete Cidades' },
+        { emoji:'🔭', name:'Miradouro Boca do Inferno', dur:'45–60 min', cost:'Free',
+          desc:"A 1.3km easy trail from the Lagoa do Canário parking lot leads to a clifftop viewpoint with arguably the most dramatic angle on the Sete Cidades crater — you can see everything from up here. Don't skip this for Vista do Rei alone.",
+          tips:[{t:'tip',lbl:'Family note',txt:'Trail is easy, flat-ish, and totally doable for all ages in 45 minutes round trip. Good shoes helpful, sneakers fine.'}],
+          maps:'https://maps.google.com/?q=Miradouro+Grota+do+Inferno+Sete+Cidades',
+          addr:'Trail from Lagoa do Canário parking' }
+      ]},
+      { icon:'🚣', label:'Afternoon', time:'12:30 PM', activities:[
+        { emoji:'🍴', name:'Lunch in Sete Cidades Village', dur:'45–60 min', cost:'~€10–15/person',
+          desc:"A handful of small cafes in the village at lake level. Options are simple — toasties, local soup, grilled fish — but the setting by the lake is unbeatable. Alternatively, swing by a padaria (bakery) in PD before you leave and eat at the lake shore.",
+          tips:[{t:'tip',lbl:'Easiest option',txt:'Pack lunch from a PD padaria before leaving — better selection, cheaper, and you can eat right by the water. Any bakery on the drive west will have what you need.'}],
+          maps:'https://maps.google.com/?q=restaurante+Sete+Cidades+Azores',
+          addr:'Sete Cidades village, Ponta Delgada' },
+        { emoji:'🏘️', name:'Sete Cidades Village + Kayaking', dur:'1.5–2 hrs', cost:'Kayak ~€15–20/hr',
+          desc:"Drive down into the crater to the village at lake level. Walk the bridge between the blue and green lakes, rent kayaks or paddleboats, and spend an hour on the water. Paddling inside a dormant volcano is exactly as good as it sounds.",
+          tips:[{t:'tip',lbl:'Pro tip',txt:'Leave phones in the car or bring dry bags. The 19-year-old will try to go fast. Let them.'}],
+          maps:'https://maps.google.com/?q=Sete+Cidades+village+Azores',
+          addr:'Sete Cidades village, Ponta Delgada' },
+        { emoji:'♨️', name:'Ponta da Ferraria — Ocean Hot Spring', dur:'1–1.5 hrs', cost:'Ocean free · Spa ticketed on-site',
+          desc:"Volcanic vents heat the ocean water at this rugged spot on the far west of the island. At low tide you're in a natural hot tub in the Atlantic Ocean. The spa (Wed–Sun, 10:30am–5:30pm) has a proper warm pool at ~36°C. The outdoor ocean section is free always — bring old towels and water shoes.",
+          tips:[
+            {t:'warn',lbl:'Tide timing',txt:'The experience is dramatically better within 1–2 hours of low tide. At low tide the spring water concentrates and the pool is genuinely warm. At high tide, cold ocean waves dilute it significantly. Check tides before you leave.'},
+            {t:'crowd',lbl:'Crowds',txt:'Gets busy by 2–3 PM in summer. Aim to arrive around 1 PM.'},
+            {t:'tip',lbl:'Spa vs ocean',txt:'The free ocean pool is the classic experience — volcanic rocks, open sea, wild setting. The spa pool is more comfortable and consistent temperature. Both worth it if time allows.'}
+          ],
+          maps:'https://maps.google.com/?q=Termas+da+Ferraria+Mosteiros+Azores',
+          addr:'Rua Ilha Sabrina (Ponta da Ferraria), 9555-102 Ginetes, São Miguel',
+          tideWidget: true },
+        { emoji:'🌅', name:'Mosteiros — Sunset Viewpoint', dur:'30 min', cost:'Free',
+          desc:"The north coast village of Mosteiros has dramatic black lava sea stacks rising from the ocean. A brief stop on the way back — late afternoon light turns everything golden. 15 min from Ferraria.",
+          maps:'https://maps.google.com/?q=Mosteiros+Azores',
+          addr:'Mosteiros, Ponta Delgada, São Miguel' }
+      ]},
+      { icon:'🌙', label:'Evening', time:'Drive back ~45 min', activities:[
+        { emoji:'🚗', name:'Drive Back to Ponta Delgada', dur:'45 min', cost:null,
+          desc:"South coast road back to the city. Good playlist weather." }
+      ]}
+    ],
+    restaurants:[
+      { name:'Anfiteatro Restaurant', emoji:'🍽️', type:'Modern Azorean · Upscale Casual',
+        desc:"Inventive takes on traditional Azorean dishes in a comfortable atmosphere. Good for a group. Azorean beef is exceptional here — grass-fed on volcanic pastures. Good local wine list.",
+        mustOrder:'Azorean beef (any cut). Rabbit with pineapple and sweet potato. Azorean-style octopus. Ask for a wine recommendation.',
+        res:'reserve', resNote:'Reserve ahead for a group of 5.',
+        maps:'https://maps.google.com/?q=Anfiteatro+Restaurant+Ponta+Delgada+Azores',
+        addr:'Ponta Delgada, São Miguel',
+        reservationLink:'https://www.tripadvisor.com/Restaurant_Review-g189135-Ponta_Delgada_Sao_Miguel_Azores.html',
+        trip:'https://www.tripadvisor.com/Restaurants-g189135-Ponta_Delgada_Sao_Miguel_Azores.html' },
+      { name:'Cais da Sardinha', emoji:'⚓', type:'Waterfront Seafood · Harbor Location',
+        desc:"On the old waterfront pier, with harbor views and a classic fish-and-seafood focus. Prawns in garlic sauce, fresh tuna bitoque, grilled cherne. More casual atmosphere than Anfiteatro with a great summer terrace. Live music on the terrace some nights.",
+        mustOrder:'Prawns in garlic sauce. Tuna bitoque (tuna steak with fried egg). Fresh fish of the day. Sit on the terrace if weather allows.',
+        res:'reserve', resNote:'Reserve for a group, especially for terrace seating.',
+        maps:'https://maps.google.com/?q=Cais+da+Sardinha+Ponta+Delgada+Azores',
+        addr:'Av. Infante Dom Henrique, Ponta Delgada (harbor area)',
+        trip:'https://www.tripadvisor.com/Restaurants-g189135-Ponta_Delgada_Sao_Miguel_Azores.html' }
+    ],
+    rain:'If the crater is fogged in: drive down to Sete Cidades village and kayak — no view required for that. Do Ferraria hot springs (better in cool weather anyway). Reschedule viewpoints to your clearest day.',
+    tip:'Check the Sete Cidades webcam before leaving. West coast is the cloudiest part of the island but fog usually lifts by 10 AM. Start with a long breakfast if needed.'
+  },
+
+  // ── DAY 3 ──
+  {
+    id:'day3', dateStr:'2026-06-09', number:3, label:'Tuesday, June 9',
+    theme:'South Coast + Rest Day', region:'South Coast · PD', emoji:'🏝️', color:'#1a7cb8',
+    drive:'20 min to Vila Franca',
+    periods:[
+      { icon:'🌅', label:'Morning', time:'9:00 AM', activities:[
+        { emoji:'🏝️', name:'Ilhéu de Vila Franca do Campo', dur:'1.5–2 hrs', cost:'~€5 + boat',
+          desc:"A volcanic islet 20 min east of PD, reached by a short boat ride from the town marina. Inside the ancient crater is a perfectly circular natural swimming pool open to the sea — clear, calm, and extraordinary. One of the most beautiful natural swimming spots in Portugal. Book in advance — daily quota is strict.",
+          tips:[
+            {t:'warn',lbl:'Must book ahead!',txt:'Tickets at ilheu.vilafrancadocampo.pt — sells out in summer. Book before the trip.'},
+            {t:'tip',lbl:'What to bring',txt:'Snorkel gear, sunscreen, water shoes. The water is clear — you\'ll see fish around the crater walls.'}
+          ],
+          maps:'https://maps.google.com/?q=Ilhéu+Vila+Franca+do+Campo+Azores',
+          addr:'Marina de Vila Franca do Campo',
+          web:'https://ilheu.vilafrancadocampo.pt' },
+        { emoji:'🏖️', name:'Vila Franca do Campo Village', dur:'30 min', cost:'Free',
+          desc:"A charming south coast town worth a brief stroll after the islet. The Igreja do Espírito Santo and harbor are both worth a look. Good coffee at the main square cafes.",
+          maps:'https://maps.google.com/?q=Vila+Franca+do+Campo+Azores',
+          addr:'Vila Franca do Campo, São Miguel' }
+      ]},
+      { icon:'🌊', label:'Afternoon', time:'1:00 PM onwards', activities:[
+        { emoji:'🍴', name:'Lunch in Vila Franca do Campo', dur:'45–60 min', cost:'~€12–18/person',
+          desc:"Several good options on and near the main square. Nothing fancy — fresh fish plates, local bread, honest house wine. This is what lunch in the Azores actually looks like outside of tourist-facing restaurants.",
+          tips:[{t:'tip',lbl:'Good picks',txt:"Café Central and O Emigrante on the main square are both well regarded locally for lunch. Try the grilled wreckfish (cherne) if it's on the board."}],
+          maps:'https://maps.google.com/?q=restaurante+Vila+Franca+do+Campo+Azores',
+          addr:'Vila Franca do Campo town center' },
+        { emoji:'♨️', name:'Ribeira Quente — Volcanic Beach', dur:'1.5–2 hrs', cost:'Free',
+          desc:"A black sand beach with an unusual distinction: the sand is warm underfoot because of geothermal heat from below. Volcanic vents mean the near-shore ocean water here is noticeably warmer than the rest of the island's coast. A genuinely strange and lovely place for an afternoon.",
+          tips:[
+            {t:'tip',lbl:'Why it\'s special',txt:'The warm sand on a black volcanic beach with clear Atlantic water. It\'s not exactly a resort but it\'s memorable.'},
+            {t:'crowd',lbl:'Access',txt:'Parking near the beach. Small village with a few cafes for lunch.'}
+          ],
+          maps:'https://maps.google.com/?q=Ribeira+Quente+beach+Azores',
+          addr:'Ribeira Quente, Povoação, São Miguel' },
+        { emoji:'🌿', name:'Relaxed South Coast Drive Back', dur:'~45 min', cost:'Free',
+          desc:"The south coast road from Ribeira Quente back to PD passes through dramatically green cliffs and ocean views. No rush today — this is a recovery day after yesterday's big hike and before tomorrow's canyoning.",
+          tips:[{t:'tip',lbl:'Stop anywhere',txt:'If something looks beautiful from the road, pull over. The south coast is full of unmarked viewpoints that don\'t make the guides.'}] }
+      ]},
+      { icon:'🌙', label:'Evening', time:'7:00 PM', activities:[
+        { emoji:'🍷', name:'Easy Evening in Ponta Delgada', dur:'Evening', cost:null,
+          desc:"Early to bed tonight — canyoning starts at 9 AM tomorrow. A relaxed dinner and a good night's sleep is the plan." }
+      ]}
+    ],
+    restaurants:[
+      { name:'A Tosca', emoji:'🎯', type:'Contemporary Azorean · Best in City',
+        desc:"Frequently cited as the best restaurant in Ponta Delgada. Precise, creative treatment of exceptional local ingredients — fish, beef, regional cheeses. Intimate space, excellent wine list.",
+        mustOrder:'Whatever the fresh fish of the day is. Tuna dishes exceptional here. Local Azorean cheese plate. Don\'t skip dessert.',
+        res:'reserve', resNote:'Reserve ahead.',
+        maps:'https://maps.google.com/?q=A+Tosca+Ponta+Delgada+Azores',
+        addr:'Ponta Delgada, São Miguel',
+        reservationLink:'https://www.tripadvisor.com/Restaurants-g189135-Ponta_Delgada_Sao_Miguel_Azores.html',
+        trip:'https://www.tripadvisor.com/Restaurants-g189135-Ponta_Delgada_Sao_Miguel_Azores.html' },
+      { name:"Nonnas Teeth & Tomatoes", emoji:'🍕', type:'Italian · Neapolitan Pizza',
+        desc:"Highly rated Italian in Ponta Delgada with genuine Neapolitan-style pizza and pasta. A completely different cuisine option and very popular with families. Great for when the teenagers have had enough fish. Near the city center.",
+        mustOrder:'Neapolitan pizza — any of the wood-fired options. Pasta specials. Good burrata if on the menu.',
+        res:'walkIn', resNote:'Walk-in, arrive before 7 PM to be safe.',
+        maps:'https://maps.google.com/?q=Nonnas+Teeth+Tomatoes+Ponta+Delgada+Azores',
+        addr:'Ponta Delgada, São Miguel',
+        trip:'https://www.tripadvisor.com/Restaurant_Review-g189135-Ponta_Delgada_Sao_Miguel_Azores.html' }
+    ],
+    rain:'If the islet boats aren\'t running: spend the morning at Ponta Delgada\'s covered market (Mercado da Graça) — an old iron-and-glass building full of local produce, cheese, and bread. Skip Ribeira Quente if raining and do a pottery or local craft stop instead.',
+    tip:'Eat a solid breakfast and get good sleep tonight. Canyoning starts at 9 AM tomorrow — you want everyone rested and fueled.'
+  },
+
+  // ── DAY 4 ──
+  {
+    id:'day4', dateStr:'2026-06-10', number:4, label:'Wednesday, June 10',
+    theme:'Canyoning Day', region:'North Coast · Central', emoji:'🧗', color:'#d4800a',
+    drive:'30 min to north coast',
+    periods:[
+      { icon:'⛰️', label:'Morning', time:'Canyoning 9:00 AM — PRE-BOOKED', activities:[
+        { emoji:'🏄', name:'Canyoning — Half Day', dur:'~4 hrs', cost:'Pre-booked',
+          desc:"Rappelling waterfalls through jungle gorges, sliding natural rock chutes, swimming in cold green pools in the Azorean forest. This is the most purely fun thing on the trip. Most São Miguel canyoning is in the north/central area near Ribeira Grande. Everyone gets soaked. Everyone loves it.",
+          tips:[
+            {t:'warn',lbl:'Prep',txt:'Eat a REAL breakfast before this. Canyoning burns a lot of energy and starts at 9 AM. Bring dry bags for any valuables.'},
+            {t:'tip',lbl:'Rain note',txt:'Better in the rain — more water flow, more dramatic. Don\'t let drizzle disappoint anyone.'}
+          ],
+          web:'https://www.azoreanblueberry.com/en/',
+          faq:[
+            {q:"What's included?", a:"Safety equipment, licenses, insurance, and qualified guides are all included. Photos and videos are provided on Canyoning Adventure tours."},
+            {q:"Can we do it if it rains?", a:"Yes — rain is actually the best condition! You'll get wet anyway. They only cancel if water levels are dangerously high or there's a storm alert."},
+            {q:"What do we need to bring?", a:"Wear a swimsuit under your clothes. Bring a towel. Useful extras: a lycra/rash vest as a base layer, any required medication, a hairband, a snack, and water for after."},
+            {q:"What if someone doesn't want to jump?", a:"Jumps are NEVER mandatory. Guides always have alternative options — a rope to rappel down, or a side path to watch without jumping."},
+            {q:"What if someone can't swim?", a:"Swimming ability is recommended but not required. Tell your guide beforehand and they'll adjust accordingly."},
+            {q:"Experience vs Adventure — what's the difference?", a:"Experience = 3 hours, suitable for ages 6+, great intro, all fun. Adventure = 5 hours, bigger waterfalls, more walking in the canyon, higher adrenaline. Adventure Salto do Cabrito minimum age is 12."},
+            {q:"Height and weight limits?", a:"Height: 1.20m–2.0m. Weight: 20–120 kg (44–265 lbs). Maximum waist circumference for harness: 1.40m (55 in)."},
+            {q:"Can we bring glasses?", a:"Yes, but use a strap to secure them. Contact lenses are better if possible. You'll mostly be in shade so sunglasses aren't necessary."},
+            {q:"What about medication?", a:"Inform your guides of any medical conditions. If you need medication during the tour (like an inhaler), give it to a guide — they store it safely in waterproof bags."}
+          ] }
+      ]},
+      { icon:'🍃', label:'Afternoon', time:'After canyoning wraps (~1 PM)', activities:[
+        { emoji:'🍴', name:'Lunch in Ribeira Grande', dur:'45–60 min', cost:'~€10–15/person',
+          desc:"You'll finish canyoning in the Ribeira Grande area — perfect for a local lunch. Simple taskas serve unfussy Azorean food at honest prices.",
+          tips:[{t:'tip',lbl:'Good pick',txt:"Tasca Tasca on Rua do Município in Ribeira Grande is reliable for grilled fish and meat. Ask what the day's special is."}],
+          maps:'https://maps.google.com/?q=restaurante+Ribeira+Grande+Azores',
+          addr:'Ribeira Grande, São Miguel' },
+        { emoji:'♨️', name:'Caldeiras da Ribeira Grande — Post-Canyon Soak', dur:'45 min', cost:'Free',
+          desc:"Free public hot spring pools right in Ribeira Grande town center, fed by geothermal vents. After two hours in cold canyon water, this is exactly what cold muscles need — warm volcanic water, no crowds, no cost, no reservation. Locals bring their lunch and spend the afternoon here. You'll fit right in.",
+          tips:[
+            {t:'tip',lbl:'Why this works so well',txt:'Cold canyoning water → hot volcanic spring = perfect contrast. Sore arms and legs from rappelling love the heat. 45 minutes here is more effective than a hot shower and infinitely more memorable.'},
+            {t:'crowd',lbl:'Local tip',txt:'These are real public baths, not a tourist attraction. Bring a towel. Just walk in.'}
+          ],
+          maps:'https://maps.google.com/?q=Caldeiras+Ribeira+Grande+hot+springs+Azores',
+          addr:'Rua das Caldeiras, Ribeira Grande, São Miguel' },
+        { emoji:'🍵', name:'Gorreana Tea Plantation', dur:'45–60 min', cost:'Free',
+          desc:"The oldest working tea plantation in Europe, on the north coast. Green hillsides of tea plants, a free tasting room, a small museum. One of those genuinely unexpected places that sticks with you. Perfect post-canyoning stop — no physical effort required.",
+          tips:[{t:'tip',lbl:'Shop note',txt:'Buy loose-leaf tea and local jams. Good gifts and completely unique to the Azores.'}],
+          maps:'https://maps.google.com/?q=Gorreana+Tea+Plantation+Ribeira+Grande+Azores',
+          addr:'Gorreana, Ribeira Grande, São Miguel',
+          web:'https://www.gorreana.pt' }
+      ]},
+      { icon:'🌙', label:'Evening', time:'Back to PD', activities:[
+        { emoji:'🚗', name:'Drive Back to Ponta Delgada', dur:'30 min', cost:null,
+          desc:"Everyone tired in the best possible way. Relaxed dinner, early bed." }
+      ]}
+    ],
+    restaurants:[
+      { name:'Tasquinha Vieira', emoji:'🦑', type:'Creative Seasonal Azorean',
+        desc:"A dynamic little restaurant with a menu that changes based on what's fresh. Fish custards, swordfish belly, pork with Furnas yam purée. Less touristy than bigger spots — a genuine local find.",
+        mustOrder:'Ask what came in fresh today. Anything with squid or swordfish. Try the local wine pairing.',
+        res:'reserve', resNote:'Call or email ahead for a group.',
+        maps:'https://maps.google.com/?q=Tasquinha+Vieira+Ponta+Delgada+Azores',
+        addr:'Ponta Delgada, São Miguel',
+        reservationLink:'mailto:tasquinhavieira@gmail.com',
+        trip:'https://www.tripadvisor.com/Restaurants-g189135-Ponta_Delgada_Sao_Miguel_Azores.html' },
+      { name:'Louvre Michaelense', emoji:'☕', type:'Historic Portuguese Café-Restaurant',
+        desc:"A Ponta Delgada institution since 1890 — a grand old coffee house and restaurant with ornate interiors and traditional Portuguese dishes. Completely different atmosphere from the contemporary spots. If you want old-world island character over modern cuisine, this is it.",
+        mustOrder:'Bacalhau à Brás or any cod preparation. House pastel de nata. The atmosphere is half the meal.',
+        res:'early', resNote:'Arrive early or call ahead.',
+        maps:'https://maps.google.com/?q=Louvre+Michaelense+Ponta+Delgada+Azores',
+        addr:'Rua António José d\'Almeida, Ponta Delgada',
+        trip:'https://www.tripadvisor.com/Restaurant_Review-g189135-d2386668-Reviews-Louvre_Michaelense-Ponta_Delgada_Sao_Miguel_Azores.html' }
+    ],
+    rain:'Canyoning is excellent in rain — more flow, more dramatic. Tea plantation and Caldeirões park are all-weather. This is one of the best possible rainy days on the schedule.',
+    tip:'Real breakfast today. Canyoning starts at 9 AM and burns a serious amount of calories. Don\'t show up on an empty stomach.'
+  },
+
+  // ── DAY 5 ──
+  {
+    id:'day5', dateStr:'2026-06-11', number:5, label:'Thursday, June 11',
+    theme:'Furnas — Volcanic Valley', region:'Eastern São Miguel', emoji:'🌋', color:'#b82222',
+    drive:'45 min from PD',
+    periods:[
+      { icon:'🌅', label:'Morning', time:'Leave 8:30 AM', activities:[
+        { emoji:'💨', name:'Furnas Village — Fumaroles Walk', dur:'45–60 min', cost:'Free',
+          desc:"Steam rises through cracks in the pavement in the middle of the village. Volcanic vents bubble and hiss right next to houses and parked cars. Furnas simply exists in the middle of this and nobody blinks. Walk around town — it\'s surreal, free, and unlike anywhere else.",
+          tips:[{t:'tip',lbl:'Smell alert',txt:"Strong sulfur smell (rotten eggs). Kids usually love this. Adults pretend they don't."}],
+          maps:'https://maps.google.com/?q=Furnas+village+fumaroles+Azores',
+          addr:'Furnas village, Povoação, São Miguel' },
+        { emoji:'🥘', name:'Watch the Cozido Pots Emerge from the Earth', dur:'30 min', cost:'Free',
+          desc:"Drive to the north side of Lagoa das Furnas (~5 min from village). Around 11:45 AM, restaurant workers dig the cozido pots out of volcanic soil where they\'ve been cooking since early morning in geothermal heat. This is one of the most extraordinary culinary spectacles on Earth. Be here for it.",
+          tips:[{t:'warn',lbl:'Timing',txt:'Be at Lagoa das Furnas (north shore, near the caldeiras) by 11:45 AM. Pots come out around noon. This is what makes your Tony\'s lunch extraordinary.'}],
+          maps:'https://maps.google.com/?q=Lagoa+das+Furnas+cozido+caldeiras+Azores',
+          addr:'Lagoa das Furnas, north shore' }
+      ]},
+      { icon:'🍽️', label:'Afternoon', time:'12:30 PM Lunch · 2:30 PM Gardens', activities:[
+        { emoji:'🏛️', name:'Terra Nostra Park — Gardens + Thermal Pool', dur:'1.5–2 hrs', cost:'€10/person (all day)',
+          desc:"One of the great botanical gardens of the world, set in the floor of Furnas caldera. Enormous ferns, ancient trees, lily ponds — and the famous thermal pool: iron-rich, amber-colored, warm. You can swim laps in it. The whole garden is walkable in 1.5 hours with the pool included.",
+          tips:[
+            {t:'tip',lbl:'Pool tip',txt:'The iron stains light-colored swimwear yellow. Wear something dark or old.'},
+            {t:'crowd',lbl:'Crowds',txt:'Buy tickets at entrance or online. Big enough garden to find quiet corners even when busy.'}
+          ],
+          maps:'https://maps.google.com/?q=Parque+Terra+Nostra+Furnas+Azores',
+          addr:'Largo Marquês da Praia e Monforte, 9675-061 Furnas',
+          web:'https://www.parqueterranostra.com' }
+      ]},
+      { icon:'🌙', label:'Evening', time:'After 8:00 PM', activities:[
+        { emoji:'♨️', name:'Poça da Dona Beija — Night Soak', dur:'1–1.5 hrs', cost:'~€6–8/person',
+          desc:"The most atmospheric hot spring on the island. Five shallow pools at 37–39°C, arranged along a volcanic stream through tropical gardens. Go after dark — softly lit, steam rising in the cooler air, completely magical. Open until 11 PM.",
+          tips:[
+            {t:'tip',lbl:'Go at night',txt:'The evening experience here is completely different from daytime. Arrive 8:30–9 PM. Bring flip-flops and old towels. Don\'t rush.'},
+            {t:'crowd',lbl:'Evening crowds',txt:'Can be busy. If crowded on arrival, do one more lap of Terra Nostra and return at 9:30 PM.'}
+          ],
+          maps:'https://maps.google.com/?q=Poça+da+Dona+Beija+Furnas+Azores',
+          addr:'Rua Dr. Frederico Moniz Pereira, 9675-061 Furnas',
+          web:'https://www.pocasdonabeija.com' },
+        { emoji:'🚗', name:'Drive Back to PD', dur:'45 min', cost:null, desc:"Late return tonight. Worth every minute." }
+      ]}
+    ],
+    restaurants:[
+      { name:'Dinner in Furnas — Eat Before Hot Springs (6:30 PM)', emoji:'🌋', type:'Local Furnas Village · Eat at 6:30 PM',
+        desc:"Eat dinner in Furnas village at 6:30 PM BEFORE heading to Poça da Dona Beija at 8 PM. After Tony's enormous lunch you won't be starving — a light dinner in the valley is exactly right. Several simple local options on the main street.",
+        mustOrder:'Simple grilled fish or meat, local bread, house wine. Nothing heavy — you still have hot springs ahead.',
+        res:'early', resNote:'Walk-in. Arrive by 6:30 PM — most Furnas spots close early.',
+        maps:'https://maps.google.com/?q=restaurante+Furnas+village+Azores',
+        addr:'Furnas village, Povoação, São Miguel' },
+      { name:'Terra Nostra Park Restaurant', emoji:'🌿', type:'Park Restaurant · Inside the Gardens',
+        desc:"If you want to eat inside the Terra Nostra botanical garden before or after the pool, the park has its own restaurant. More expensive than village spots but the setting — dining surrounded by ancient ferns and lily ponds — is genuinely lovely.",
+        mustOrder:'Light seafood, Azorean soup, local desserts. Skip the heavy mains — you want to soak in the pools after.',
+        res:'walkIn', resNote:'Walk-in during park hours.',
+        maps:'https://maps.google.com/?q=Parque+Terra+Nostra+Furnas+Azores',
+        addr:'Largo Marquês da Praia e Monforte, 9675-061 Furnas',
+        trip:'https://www.tripadvisor.com/Restaurant_Review-g1190881-Furnas_Sao_Miguel_Azores.html' }
+    ],
+    rain:"Furnas is completely weather-proof. Hot springs are BETTER in cool rainy weather. Terra Nostra garden looks more dramatic in mist. The fumaroles are always steaming. This is your ideal rainy day — if any other day gets bad weather, swap it with Furnas.",
+    tip:"Light breakfast today — Tony's portions are enormous and you eat at noon. Arriving hungry at the restaurant is fine. Arriving stuffed is not."
+  },
+
+  // ── DAY 6 ──
+  {
+    id:'day6', dateStr:'2026-06-12', number:6, label:'Friday, June 12',
+    theme:'Lagoa do Fogo + Caldeira Velha', region:'Central Island', emoji:'🔥', color:'#0a7c8c',
+    drive:'30 min from PD',
+    periods:[
+      { icon:'🌅', label:'Morning', time:'Leave 8:30 AM', activities:[
+        { emoji:'🏔️', name:'Lagoa do Fogo — Lake of Fire', dur:'1–1.5 hrs', cost:'Free (shuttle €5 if active)',
+          desc:"São Miguel's most pristine lake, high in the volcanic center of the island. Smaller and wilder than Sete Cidades, not as heavily visited, equally breathtaking when the clouds cooperate. Swimming is forbidden to protect the ecosystem. The rim viewpoints are extraordinary.",
+          tips:[
+            {t:'warn',lbl:'Shuttle note',txt:'Shuttle-only access typically starts mid-June (€5/person). Your trip is early June so you likely can drive — verify at lagoadofogo.pt before going.'},
+            {t:'warn',lbl:'Fog warning',txt:'Check the Lagoa do Fogo webcam before leaving. The central plateau is often in cloud when the coast is clear.'},
+            {t:'tip',lbl:'Clear sky tip',txt:'If the webcam shows clear skies, GO IMMEDIATELY. Don\'t wait for breakfast. This view is genuinely rare.'}
+          ],
+          maps:'https://maps.google.com/?q=Lagoa+do+Fogo+Azores',
+          addr:'Serra de Água de Pau, Lagoa, São Miguel',
+          web:'https://lagoadofogo.pt',
+          webcam:'lf' },
+        { emoji:'💦', name:'Salto do Cabrito Waterfall', dur:'45–60 min', cost:'Free',
+          desc:"A large waterfall hidden in lush forest, accessible via an easy trail on the way between Lagoa do Fogo and Caldeira Velha. Well worth 45 minutes.",
+          maps:'https://maps.google.com/?q=Salto+do+Cabrito+waterfall+Azores',
+          addr:'Near Caldeiras da Ribeira Grande, São Miguel' }
+      ]},
+      { icon:'🌊', label:'Afternoon', time:'12:30 PM Lunch · 2:30 PM Hot Springs', activities:[
+        { emoji:'🥩', name:'Lunch in Ribeira Grande', dur:'1–1.5 hrs', cost:'~€15–25/person',
+          desc:"São Miguel's second city on the north coast. Lunch stop before the afternoon hot springs.",
+          tips:[{t:'tip',lbl:'Good option',txt:'A Associação (near Ribeira Grande) is locally famous for Bife à Associação — steak with white wine, garlic, fried egg, and pickled red pepper. Call ahead.'}],
+          maps:'https://maps.google.com/?q=Ribeira+Grande+Azores',
+          addr:'Ribeira Grande, São Miguel' },
+        { emoji:'🌊', name:'Caldeira Velha — Jungle Thermal Waterfall', dur:'1.5–2 hrs', cost:'€10 adult · €5 junior',
+          desc:"The most photogenic hot spring on the island. A short forest walk leads to a thermal waterfall — 25–28°C at the falls, up to 38°C in the lower pools. Dense ferns, volcanic rock, steam rising from warm water. You can stand directly under the cascade. One of the highlights of the trip.",
+          tips:[
+            {t:'warn',lbl:'Book ahead!',txt:'Sells out same day in summer. Book online at caldeiravelha.net BEFORE your trip.'},
+            {t:'tip',lbl:'Photography',txt:'Best light in afternoon. The waterfall pool is the star. The upper viewing terrace gives a great top-down angle.'}
+          ],
+          maps:'https://maps.google.com/?q=Caldeira+Velha+hot+springs+Azores',
+          addr:'Estrada Regional da Lagoa do Fogo, 9600-590 Ribeira Grande',
+          web:'https://caldeiravelha.net' }
+      ]},
+      { icon:'🌙', label:'Evening', time:'Back by 6:30 PM', activities:[
+        { emoji:'🚗', name:'Drive Back to Ponta Delgada', dur:'30 min', cost:null, desc:"Relaxed evening — lighter dinner after a full day." }
+      ]}
+    ],
+    restaurants:[
+      { name:'O Giro', emoji:'🐟', type:'Modern Azorean · Local Favourite',
+        desc:"A Ponta Delgada favourite near Hotel Talisman. Recently renovated with a modern look to match its modern-Azorean menu. Less on the tourist radar — better tables, better prices.",
+        mustOrder:'Fresh fish of the day. Local limpets. Check the specials board first.',
+        res:'early', resNote:'Call ahead or arrive early.',
+        maps:'https://maps.google.com/?q=Restaurante+O+Giro+Ponta+Delgada+Azores',
+        addr:'Ponta Delgada, São Miguel (near Hotel Talisman)',
+        trip:'https://www.tripadvisor.com/Restaurants-g189135-Ponta_Delgada_Sao_Miguel_Azores.html' },
+      { name:'À Terra Restaurant', emoji:'🌱', type:'Contemporary Portuguese · Waterfront Setting',
+        desc:"A well-regarded contemporary Portuguese restaurant in Ponta Delgada with a focus on seasonal ingredients and clean, modern presentations. Good for a group and a nice contrast to the purely Azorean spots — broader Portuguese cuisine, terrace seating.",
+        mustOrder:'Seasonal fish preparations. The menu changes regularly — ask what\'s best that week. Good natural wine list.',
+        res:'reserve', resNote:'Reserve ahead for a group.',
+        maps:'https://maps.google.com/?q=À+Terra+Restaurant+Ponta+Delgada+Azores',
+        addr:'R. Diário dos Açores 35, 9500-178 Ponta Delgada',
+        trip:'https://www.tripadvisor.com/Restaurants-g189135-Ponta_Delgada_Sao_Miguel_Azores.html' }
+    ],
+    rain:'If Lagoa do Fogo is completely fogged in: go directly to Caldeira Velha (jungle waterfall is magical in rain), then Salto do Cabrito. The hot springs are honestly BETTER when it\'s raining. Skip the viewpoint and try another early morning.',
+    tip:'Watch the webcam. Lagoa do Fogo clears are rare and precious. If it\'s clear at 8 AM, drive up before breakfast. The lake waits for no one.'
+  },
+
+  // ── DAY 7 ──
+  {
+    id:'day7', dateStr:'2026-06-13', number:7, label:'Saturday, June 13',
+    theme:'Nordeste — Wild Northeast', region:'Northeastern São Miguel', emoji:'🌿', color:'#6430b8',
+    drive:'1 hr from PD',
+    periods:[
+      { icon:'🌅', label:'Morning', time:'Leave 8:30 AM', activities:[
+        { emoji:'💧', name:'Parque Natural da Ribeira dos Caldeirões', dur:'45–60 min', cost:'Free',
+          desc:"Ancient water mills, jungle-draped waterfalls, and easy trails through a landscape that looks like a film set. Free to enter. The main waterfall is visible from the entrance with a larger one deeper in. Peaceful and completely uncommercial.",
+          maps:'https://maps.google.com/?q=Ribeira+dos+Caldeirões+Natural+Park+Nordeste+Azores',
+          addr:'Achada, São Miguel' },
+        { emoji:'🌺', name:'Miradouro Ponta do Sossego', dur:'20–30 min', cost:'Free',
+          desc:"A beautifully maintained clifftop garden viewpoint overlooking the dramatic northeast coast. Meticulously kept flowerbeds and winding paths with sweeping ocean views. Local families picnic here on weekends. In June the flowers are at their best.",
+          tips:[{t:'tip',lbl:'Hidden detail',txt:'There are cats here. Island cats. Give this 5 extra minutes.'}],
+          maps:'https://maps.google.com/?q=Miradouro+Ponta+do+Sossego+Nordeste+Azores',
+          addr:'Lomba da Pedreira, Nordeste, São Miguel' },
+        { emoji:'🔭', name:'Miradouro Ponta da Madrugada', dur:'20 min', cost:'Free',
+          desc:"Known as the best sunrise spot on São Miguel — named 'Dawn Point' for exactly that reason. At any time of day the views of the rugged northeast coastline are exceptional. The Ponta do Arnel lighthouse stands in the middle distance, ocean in every direction.",
+          maps:'https://maps.google.com/?q=Miradouro+Ponta+da+Madrugada+Nordeste+Azores',
+          addr:'Lomba da Pedreira, Nordeste, São Miguel' }
+      ]},
+      { icon:'🛣️', label:'Afternoon', time:'12:30 PM onwards', activities:[
+        { emoji:'🍴', name:'Lunch in Nordeste Village', dur:'1–1.5 hrs', cost:'~€12–18/person',
+          desc:"Nordeste has small local restaurants where you\'re the only tourist. Grilled fish, local bread, house wine. This is what eating in the Azores is like for people who live here.",
+          maps:'https://maps.google.com/?q=Nordeste+village+restaurants+Azores',
+          addr:'Nordeste village, São Miguel' },
+        { emoji:'💧', name:'Véu da Noiva — Bridal Veil Waterfall', dur:'15–20 min', cost:'Free',
+          desc:"A thin, elegant waterfall dropping from a clifftop directly to the ocean — the 'Bridal Veil' of São Miguel. Visible from the road on the north coast near Rosário. A brief but beautiful stop on the drive home.",
+          maps:'https://maps.google.com/?q=Salto+do+Véu+da+Noiva+Azores+Rosário',
+          addr:'Rosário, Ribeira Grande, São Miguel' },
+        { emoji:'🏙️', name:'Back to Ponta Delgada + Final Afternoon', dur:'Afternoon', cost:null,
+          desc:"Back in the city by 4–5 PM. Last walk along the waterfront, any final gifts from the market, Azorean pineapple liqueur, a coffee at a harbor cafe. The Azorean pineapple liqueur is the correct gift to bring home.",
+          maps:'https://maps.google.com/?q=Ponta+Delgada+center+Azores' }
+      ]},
+      { icon:'⭐', label:'Evening — Final Dinner', time:'7:30 PM', activities:[] }
+    ],
+    restaurants:[
+      { name:'O Calheta', emoji:'⭐', type:'Modern Azorean · Fine Dining',
+        desc:"The best meal on the island for a special occasion. O Calheta could be in downtown Lisbon — beautifully designed space, creative cooking drawing on Azorean ingredients and classical technique. Every dish has a story. For your last night, this is the right call.",
+        mustOrder:'Tasting menu if available. Smoked fish preparations. Whatever is freshest from the ocean. Ask the sommelier for local wine pairings. Save room for dessert.',
+        res:'reserve', resNote:'Reserve ahead — essential for a group on the last Saturday.',
+        maps:'https://maps.google.com/?q=O+Calheta+restaurant+Ponta+Delgada+Azores',
+        addr:'Ponta Delgada, São Miguel',
+        reservationLink:'https://www.tripadvisor.com/Restaurants-g189135-Ponta_Delgada_Sao_Miguel_Azores.html',
+        trip:'https://www.tripadvisor.com/Restaurants-g189135-Ponta_Delgada_Sao_Miguel_Azores.html' },
+      { name:'Reserva Wine Bar & Restaurant', emoji:'🍷', type:'Wine-Forward · Tapas & Sharing Plates',
+        desc:"An entirely different final dinner experience — Reserva is a sophisticated wine bar with an exceptional list of Portuguese and Azorean wines, paired with creative small plates and sharing boards. Great for a group that wants to graze and drink well rather than a formal multi-course meal. Buzzy atmosphere.",
+        mustOrder:'The curated wine flight. Cheese and charcuterie board. Small plate specials — whatever the kitchen is excited about that night.',
+        res:'reserve', resNote:'Reserve ahead for a group.',
+        maps:'https://maps.google.com/?q=Reserva+wine+bar+Ponta+Delgada+Azores',
+        addr:'Ponta Delgada, São Miguel',
+        trip:'https://www.tripadvisor.com/Restaurants-g189135-Ponta_Delgada_Sao_Miguel_Azores.html' }
+    ],
+    rain:'Nordeste viewpoints are still dramatic in mist and light rain — the green is more intense, waterfalls fuller, and the whole northeast feels even wilder. The park is completely worth it in any weather.',
+    tip:'Last night — make it count. Reserve O Calheta for 7:30 PM and don\'t rush dinner. Order everything that sounds interesting. You\'ve earned it.'
+  }
+];
+
+const EMERGENCY = [
+  {lbl:'Emergency / Police / Fire', val:'112'},
+  {lbl:'Hospital PD — HSEIT', val:'296 203 000'},
+  {lbl:'INEM Medical', val:'112'},
+  {lbl:"Tony's Restaurant Furnas", val:'+351 296 584 290'},
+  {lbl:'Lagoa do Fogo Info', val:'lagoadofogo.pt'},
+  {lbl:'Caldeira Velha Booking', val:'caldeiravelha.net'}
+];
+
+const DAY_LABELS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const WMO_EMOJI_MAP = {0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',48:'🌫',51:'🌦',53:'🌧',55:'🌧',61:'🌧',63:'🌧',65:'🌧',80:'🌦',81:'🌧',82:'⛈',95:'⛈'};
+
+// ──────────────────────────────────────────────
+//  HELPERS
+// ──────────────────────────────────────────────
+
+function isToday(dateStr) {
+  const t = new Date(), d = new Date(dateStr + 'T12:00:00');
+  return t.getFullYear()===d.getFullYear() && t.getMonth()===d.getMonth() && t.getDate()===d.getDate();
+}
+
+const open = new Set();
+function tog(id, el) {
+  if (open.has(id)) { open.delete(id); el.classList.remove('open'); }
+  else { open.add(id); el.classList.add('open'); }
+}
+
+function btnMaps(url) { return url ? `<a href="${url}" target="_blank" class="abtn abtn-maps">📍 Directions</a>` : ''; }
+function btnWeb(url, lbl) { return url ? `<a href="${url}" target="_blank" class="abtn abtn-web">🔗 ${lbl||'Website'}</a>` : ''; }
+function btnCall(url, lbl) { return url ? `<a href="${url}" class="abtn abtn-call">📞 ${lbl||'Call'}</a>` : ''; }
+
+function tipClass(t) { return t==='warn'?'tb-warn':t==='crowd'?'tb-crowd':t==='rain'?'tb-rain':'tb-tip'; }
+
+function renderWebcamBox(key) {
+  const wc = key === 'sc' ? WEBCAMS[0] : WEBCAMS[1];
+  if (!wc) return '';
+  return `
+    <div class="wc-activity-box">
+      <div class="wc-act-hdr">
+        <span class="wc-act-title">📷 LIVE CAM · ${wc.name.toUpperCase()}</span>
+      </div>
+      <div class="wc-act-body">
+        <div class="wc-act-desc">Check current conditions before driving. Tap to open the live webcam on SpotAzores.</div>
+        <a href="${wc.link}" target="_blank" class="wc-act-btn">🌐 Open ${wc.name} Webcam →</a>
+      </div>
+    </div>`;
+}
+
+function renderAct(a, prefix) {
+  const id = prefix + '-' + a.name.slice(0,8).replace(/\s/g,'');
+  const pills = [];
+  if (a.dur) pills.push(`<span class="pill pill-dur">⏱ ${a.dur}</span>`);
+  if (a.cost) pills.push(`<span class="pill pill-cost">💰 ${a.cost}</span>`);
+  if (a.webcam) pills.push(`<span class="pill pill-info">📷 Webcam</span>`);
+  if (a.faq) pills.push(`<span class="pill pill-info">📋 FAQ</span>`);
+  if (a.emoji === '🍴') pills.push(`<span class="pill pill-lunch">🍴 Lunch</span>`);
+
+  let body = '';
+  if (a.desc) body += `<p class="act-desc">${a.desc}</p>`;
+  if (a.tips) a.tips.forEach(t => { body += `<div class="tipbox ${tipClass(t.t)}"><span class="tipbox-lbl">${t.lbl}</span>${t.txt}</div>`; });
+  if (a.webcam) body += renderWebcamBox(a.webcam);
+  if (a.faq) body += renderFaq(a.faq, id);
+  if (a.tideWidget) body += renderTideWidget(id);
+  if (a.addr) body += `<div class="act-addr">📌 ${a.addr}</div>`;
+  const acts = [btnMaps(a.maps), btnWeb(a.web), btnCall(a.phone)].filter(Boolean).join('');
+  if (acts) body += `<div class="action-row">${acts}</div>`;
+
+  return `
+    <div class="act" id="${id}" onclick="tog('${id}',this)">
+      <div class="act-hdr">
+        <span class="act-emoji">${a.emoji||'📍'}</span>
+        <div class="act-info">
+          <div class="act-name">${a.name}</div>
+          ${pills.length ? `<div class="act-pills">${pills.join('')}</div>` : ''}
+        </div>
+        ${body ? `<span class="act-chev">▼</span>` : ''}
+      </div>
+      ${body ? `<div class="act-body">${body}</div>` : ''}
+    </div>`;
+}
+
+function renderRestCard(r, idx, dayId) {
+  const id = `${dayId}-rest-${idx}`;
+  const tagMap = {reserve:'rt-res ⚠️ Reserve Ahead', walkIn:'rt-walk ✅ Walk-in OK', early:'rt-early ⏰ Arrive Early'};
+  const [cls, ...lblParts] = (tagMap[r.res]||'rt-walk ✅').split(' ');
+  const tagLbl = lblParts.join(' ');
+
+  let body = `<p class="rest-desc">${r.desc}</p>`;
+  if (r.mustOrder) body += `<div class="must-box"><span class="must-lbl">🍴 Must Order</span><div class="must-items">${r.mustOrder}</div></div>`;
+  if (r.resNote) body += `<div class="tipbox tb-warn"><span class="tipbox-lbl">Reservation</span>${r.resNote}</div>`;
+  if (r.addr) body += `<div class="act-addr">📌 ${r.addr}</div>`;
+  const acts = [
+    btnMaps(r.maps),
+    r.reservationLink ? `<a href="${r.reservationLink}" target="_blank" class="abtn abtn-reserve">📅 Reserve</a>` : '',
+    r.menuLink ? `<a href="${r.menuLink}" target="_blank" class="abtn abtn-menu">📋 Menu</a>` : '',
+    btnWeb(r.trip,'TripAdvisor'),
+    btnCall(r.phone)
+  ].filter(Boolean).join('');
+  if (acts) body += `<div class="action-row">${acts}</div>`;
+
+  return `
+    <div class="rest-card${idx > 0 ? ' rest-alt' : ''}" id="${id}" onclick="tog('${id}',this)">
+      <div class="rest-hdr">
+        <span class="rest-emoji">${r.emoji}</span>
+        <div class="rest-info">
+          <div class="rest-name">${r.name}</div>
+          <div class="rest-type">${r.type}</div>
+          <div class="rest-tags">
+            <span class="rest-tag ${cls}">${tagLbl}</span>
+            ${idx > 0 ? '<span class="rest-tag rt-alt">🍽️ Alternative</span>' : ''}
+          </div>
+        </div>
+        <span class="rest-chev">▼</span>
+      </div>
+      <div class="rest-body">${body}</div>
+    </div>`;
+}
+
+function renderRest(day) {
+  const list = day.restaurants || (day.restaurant ? [day.restaurant] : []);
+  if (!list.length) return '';
+  return `
+    <div class="rest-section">
+      <div class="rest-section-hdr"><span class="rest-section-icon">🍽️</span><span class="rest-section-lbl">Tonight's Dinner — 2 Options</span></div>
+      ${list.map((r, i) => renderRestCard(r, i, day.id)).join('')}
+    </div>`;
+}
+
+function renderDay(day) {
+  const today = isToday(day.dateStr);
+  let periods = '';
+  day.periods.forEach(p => {
+    const acts = p.activities.map(a => renderAct(a, day.id + '-' + p.label)).join('');
+    if (!acts) return;
+    periods += `
+      <div class="period">
+        <div class="period-hdr">
+          <span class="period-icon">${p.icon}</span>
+          <span class="period-lbl">${p.label}</span>
+          ${p.time ? `<span class="period-time">${p.time}</span>` : ''}
+        </div>
+        ${acts}
+      </div>`;
+  });
+
+  const rainHtml = day.rain ? `
+    <div class="period">
+      <div class="act" id="${day.id}-rain" onclick="tog('${day.id}-rain',this)">
+        <div class="act-hdr">
+          <span class="act-emoji">🌧️</span>
+          <div class="act-info"><div class="act-name">Rain / Fog Backup Plan</div><div class="act-pills"><span class="pill pill-info">Tap to expand</span></div></div>
+          <span class="act-chev">▼</span>
+        </div>
+        <div class="act-body"><div class="tipbox tb-rain"><span class="tipbox-lbl">If weather turns</span>${day.rain}</div></div>
+      </div>
+    </div>` : '';
+
+  return `
+    <div class="day-card scroll-target${today?' is-today':''}" id="${day.id}">
+      <div class="day-bar" style="background:${day.color}"></div>
+      <div class="day-hdr" onclick="tog('${day.id}',this.parentElement)">
+        <div class="day-num" style="background:${day.color}22;color:${day.color}">
+          <span class="n">${day.number}</span>
+          <span class="d">Day</span>
+        </div>
+        <div class="day-info">
+          <div class="day-title">${day.emoji} ${day.theme}</div>
+          <div class="day-sub">
+            <span>${day.label}</span>
+            ${day.drive ? `<span>· 🚗 ${day.drive}</span>` : ''}
+            ${today ? `<span class="today-tag">TODAY</span>` : ''}
+          </div>
+        </div>
+        <span class="day-chev">▼</span>
+      </div>
+      <div class="day-body">
+        ${periods}
+        ${renderRest(day)}
+        ${rainHtml}
+        ${day.tip ? `<div class="day-tip-row"><span class="dt-icon">💡</span><span class="dt-text">${day.tip}</span></div>` : ''}
+      </div>
+    </div>`;
+}
+
+// ──────────────────────────────────────────────
+//  WEATHER
+// ──────────────────────────────────────────────
+async function loadWeather() {
+  const strip = document.getElementById('weather-strip');
+  try {
+    const url = 'https://api.open-meteo.com/v1/forecast?latitude=37.7412&longitude=-25.6756&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Atlantic%2FAzores&start_date=2026-06-07&end_date=2026-06-13';
+    const r = await fetch(url);
+    if (!r.ok) throw new Error('API error');
+    const data = await r.json();
+    if (!data.daily || !data.daily.time || !data.daily.time.length) throw new Error('No data');
+    let html = '';
+    data.daily.time.forEach((d, i) => {
+      const dt = new Date(d + 'T12:00:00');
+      const code = data.daily.weathercode[i];
+      const emoji = WMO_EMOJI_MAP[code] || '🌤';
+      const hi = Math.round(data.daily.temperature_2m_max[i]);
+      const lo = Math.round(data.daily.temperature_2m_min[i]);
+      const rain = data.daily.precipitation_sum[i];
+      const tod = isToday(d);
+      html += `<div class="wx-card${tod?' wx-today':''}">
+        <div class="wx-day">${DAY_LABELS[dt.getDay()]} ${dt.getDate()}</div>
+        <span class="wx-emoji">${emoji}</span>
+        <div><span class="wx-hi">${hi}°</span> <span class="wx-lo">${lo}°</span></div>
+        ${rain > 0.5 ? `<div class="wx-rain">💧${rain.toFixed(1)}mm</div>` : ''}
+      </div>`;
+    });
+    strip.innerHTML = html || '<div class="wx-error">No forecast data available yet.</div>';
+  } catch(e) {
+    strip.innerHTML = `<div class="wx-error">Weather will load during the trip (available ~16 days out).<br>Before then: <a href="https://www.ipma.pt/en/otempo/prev.localidade.hora/#Ponta%20Delgada" target="_blank">Check IPMA Azores forecast →</a></div>`;
+  }
+}
+
+const HOUSE = {
+  name: 'Airbnb — Livramento, Ponta Delgada',
+  line1: 'Rua Padre Domingos Silva Costa, 1207',
+  line2: '9500-614 Livramento, Ponta Delgada',
+  maps: 'https://maps.google.com/?q=Rua+Padre+Domingos+Silva+Costa+1207+Livramento+Ponta+Delgada+Azores',
+  waze: 'https://waze.com/ul?q=Rua+Padre+Domingos+Silva+Costa+1207+Livramento+Ponta+Delgada',
+  note: '~5 min drive to Ponta Delgada city center · Quiet residential neighborhood'
+};
+
+function renderFaq(items, prefix) {
+  const faqId = prefix + '-faq';
+  const rows = items.map((item, i) => {
+    const iid = faqId + '-' + i;
+    return `<div class="faq-item" id="${iid}" onclick="event.stopPropagation();tog('${iid}',this)">
+      <div class="faq-q">${item.q}<span class="faq-q-chev">▼</span></div>
+      <div class="faq-a">${item.a}</div>
+    </div>`;
+  }).join('');
+  return `<div class="faq-section" id="${faqId}" onclick="event.stopPropagation()">
+    <div class="faq-hdr" onclick="tog('${faqId}',this.parentElement)">
+      <span class="faq-hdr-lbl">📋 Azorean Blueberry — FAQ</span>
+      <span class="faq-hdr-chev">▼</span>
+    </div>
+    <div class="faq-body">${rows}</div>
+  </div>`;
+}
+
+function renderTideWidget(id) {
+  const now = new Date();
+  const h = now.getHours(), m = now.getMinutes();
+  const tideUrl = `https://tideschart.com/Portugal/Azores/Ponta-Delgada/?date=${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+  const timeStr = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+  return `
+    <div class="tide-box">
+      <div class="tide-hdr">
+        <span class="tide-hdr-lbl">🌊 Tide Conditions for Ferraria</span>
+        <span class="tide-hdr-time">Now: ${timeStr}</span>
+      </div>
+      <div class="tide-body">
+        <div class="tide-note"><strong>Optimal visit window:</strong> within 1–2 hours of low tide. At low tide, hot spring water concentrates — warmest and best. At high tide, cold Atlantic water dilutes the heat significantly.</div>
+        <div class="tide-hours">🕐 Ocean pool: always open · free<br>🎫 Termas Spa: Wed–Sun 10:30am–5:30pm · ticketed on-site<br>🌡 Spa pool: ~36°C · Ocean pool: varies by tide</div>
+        <div class="action-row">
+          <a href="${tideUrl}" target="_blank" class="abtn abtn-web">🌊 Check Today's Tides</a>
+          <a href="https://pontadaferraria.com" target="_blank" class="abtn abtn-maps">ℹ️ Ferraria Info</a>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderHomeBase() {
+  const el = document.getElementById('home-base-section');
+  if (!el) return;
+  el.innerHTML = `
+    <div class="section-label" style="padding: 14px 16px 8px;">🏠 Your Airbnb</div>
+    <div style="padding: 0 14px;">
+      <div class="home-base">
+        <div class="hb-top">
+          <span class="hb-label">Home Base · All 7 Nights</span>
+          <span class="hb-badge">Livramento</span>
+        </div>
+        <div class="hb-body">
+          <div class="hb-name">${HOUSE.name}</div>
+          <div class="hb-addr">${HOUSE.line1}<br>${HOUSE.line2}</div>
+          <div class="hb-actions">
+            <a href="${HOUSE.maps}" target="_blank" class="abtn abtn-maps">📍 Google Maps</a>
+            <a href="${HOUSE.waze}" target="_blank" class="abtn abtn-web">🗺️ Waze</a>
+          </div>
+          <div class="hb-note">${HOUSE.note}</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ──────────────────────────────────────────────
+//  RENDER ALL
+// ──────────────────────────────────────────────
+function renderBookings() {
+  const items = BOOKINGS.map(b => {
+    let links = '';
+    if (b.link) links += `<a href="${b.link}" target="_blank" class="bk-link">${b.linkLabel} →</a>`;
+    if (b.link2) links += ` <a href="${b.link2}" target="_blank" class="bk-link">${b.link2Label} →</a>`;
+    const badgeLabel = b.urgency==='urgent'?'🔴 Urgent':b.urgency==='important'?'🟡 Important':'ℹ️ Check';
+    return `<div class="bk-item">
+      <div class="bk-row"><span class="bk-badge ${b.urgency}">${badgeLabel}</span><span class="bk-name">${b.name}</span></div>
+      <p class="bk-detail">${b.detail}</p>
+      <div>${links}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('bookings-section').innerHTML = `
+    <div class="section-label" style="padding: 14px 16px 8px;">⚠️ Book These Before You Go</div>
+    <div style="padding: 0 14px;">
+      <div class="bk-toggle" onclick="toggleBk()">
+        <span class="bk-icon">📋</span>
+        <div class="bk-label"><div class="bk-title">4 Required Bookings</div><div class="bk-sub">Tap to expand · Some sell out days ahead</div></div>
+        <span class="bk-chev" id="bk-chev">▼</span>
+      </div>
+      <div class="bk-body" id="bk-body">${items}</div>
+    </div>`;
+}
+
+function toggleBk() {
+  document.getElementById('bk-body').classList.toggle('open');
+  document.getElementById('bk-chev').classList.toggle('open');
+}
+
+function renderWebcams() {
+  document.getElementById('wc-grid').innerHTML = WEBCAMS.map(wc => `
+    <div class="wc-card">
+      <div class="wc-top">
+        <span class="wc-label">Live Cam</span>
+        <span class="wc-live">● spotazores</span>
+      </div>
+      <div class="wc-content">
+        <div class="wc-name">${wc.name}</div>
+        <div class="wc-sub">${wc.sub}</div>
+        <a href="${wc.link}" target="_blank" class="wc-btn">📷 Open Live Webcam →</a>
+        <div class="wc-note">${wc.note}</div>
+      </div>
+    </div>`).join('');
+}
+
+function renderDayNav() {
+  document.getElementById('day-nav').innerHTML = DAYS.map(d => `
+    <button class="dnav-btn${isToday(d.dateStr)?' dnav-today':''}" onclick="scrollTo('${d.id}')">
+      ${d.emoji} D${d.number}
+    </button>`).join('');
+}
+
+window.scrollTo = function(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (!el.classList.contains('open')) { el.classList.add('open'); open.add(id); }
+  setTimeout(() => el.scrollIntoView({behavior:'smooth', block:'start'}), 60);
+};
+
+function renderEmergency() {
+  const rows = EMERGENCY.map(e => {
+    const href = e.val.startsWith('http') ? e.val : (e.val.match(/^\+?\d/) ? 'tel:'+e.val.replace(/\s/g,'') : 'https://'+e.val);
+    return `<div class="emerg-row"><span class="emerg-lbl">${e.lbl}</span><a href="${href}" style="text-decoration:none"><span class="emerg-val">${e.val}</span></a></div>`;
+  }).join('');
+  document.getElementById('emergency-section').innerHTML = `
+    <div class="emerg-card" id="emerg" onclick="tog('emerg',this)">
+      <div class="emerg-hdr"><span class="emerg-title">🚨 Emergency Info + Key Numbers</span><span class="emerg-chev">▼</span></div>
+      <div class="emerg-body">${rows}</div>
+    </div>`;
+}
+
+function autoOpenToday() {
+  const t = DAYS.find(d => isToday(d.dateStr));
+  if (t) {
+    const el = document.getElementById(t.id);
+    if (el) { el.classList.add('open'); open.add(t.id); setTimeout(() => el.scrollIntoView({behavior:'smooth',block:'start'}), 400); }
+  }
+}
+
+// ──────────────────────────────────────────────
+//  INIT
+// ──────────────────────────────────────────────
+renderBookings();
+renderHomeBase();
+renderWebcams();
+renderDayNav();
+document.getElementById('days-main').innerHTML = DAYS.map(renderDay).join('');
+renderEmergency();
+loadWeather();
+autoOpenToday();
+</script>
+</body>
+</html>
