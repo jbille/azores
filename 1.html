@@ -8,7 +8,9 @@
 <title>São Miguel · June 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<!-- Non-blocking font load: page renders immediately with system fonts, then upgrades -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"></noscript>
 <style>
 :root {
   --bg:        #f0ece4;
@@ -1417,12 +1419,12 @@ function renderWebcams() {
 
 function renderDayNav() {
   document.getElementById('day-nav').innerHTML = DAYS.map(d => `
-    <button class="dnav-btn${isToday(d.dateStr)?' dnav-today':''}" onclick="scrollTo('${d.id}')">
+    <button class="dnav-btn${isToday(d.dateStr)?' dnav-today':''}" onclick="goToDay('${d.id}')">
       ${d.emoji} D${d.number}
     </button>`).join('');
 }
 
-window.scrollTo = function(id) {
+window.goToDay = function(id) {
   const el = document.getElementById(id);
   if (!el) return;
   if (!el.classList.contains('open')) { el.classList.add('open'); open.add(id); }
