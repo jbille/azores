@@ -786,7 +786,8 @@ const DAYS = [
           ],
           maps:'https://maps.google.com/?q=Ilhéu+Vila+Franca+do+Campo+Azores',
           addr:'Marina de Vila Franca do Campo',
-          web:'https://ilheu.vilafrancadocampo.pt' },
+          web:'vila-franca-tickets.pdf',
+          web2:'vila-franca-details.pdf' },
         { emoji:'🏖️', name:'Vila Franca do Campo Village', dur:'30 min', cost:'Free',
           desc:"A charming south coast town worth a brief stroll after the islet. The Igreja do Espírito Santo and harbor are both worth a look. Good coffee at the main square cafes.",
           maps:'https://maps.google.com/?q=Vila+Franca+do+Campo+Azores',
@@ -1119,7 +1120,7 @@ function tog(id, el) {
 }
 
 function btnMaps(url) { return url ? `<a href="${url}" target="_blank" class="abtn abtn-maps">📍 Directions</a>` : ''; }
-function btnWeb(url, lbl) { return url ? `<a href="${url}" target="_blank" class="abtn abtn-web">🔗 ${lbl||'Website'}</a>` : ''; }
+function btnWeb(url, lbl) { return url ? `<a href="${url}" target="_blank" class="abtn abtn-web">🔗 ${lbl||'Website/PDF'}</a>` : ''; }
 function btnCall(url, lbl) { return url ? `<a href="${url}" class="abtn abtn-call">📞 ${lbl||'Call'}</a>` : ''; }
 
 function tipClass(t) { return t==='warn'?'tb-warn':t==='crowd'?'tb-crowd':t==='rain'?'tb-rain':'tb-tip'; }
@@ -1155,7 +1156,7 @@ function renderAct(a, prefix) {
   if (a.faq) body += renderFaq(a.faq, id);
   if (a.tideWidget) body += renderTideWidget(id);
   if (a.addr) body += `<div class="act-addr">📌 ${a.addr}</div>`;
-  const acts = [btnMaps(a.maps), btnWeb(a.web), btnCall(a.phone)].filter(Boolean).join('');
+  const acts = [btnMaps(a.maps), btnWeb(a.web), a.web2 ? `<a href="${a.web2}" target="_blank" class="abtn abtn-web">📄 Booking Info</a>` : '', btnCall(a.phone)].filter(Boolean).join('');
   if (acts) body += `<div class="action-row">${acts}</div>`;
 
   return `
